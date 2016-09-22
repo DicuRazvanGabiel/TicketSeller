@@ -50,12 +50,6 @@ public class Flight implements IFlight {
 	}
 
 	@Override
-	public String toString() {
-		return from + " --> " + to + " date " + date.getDay() + "/" + date.getMonth() + "/" + date.getYear()
-				+ " Number Of Seats " + numberOfSeats;
-	}
-
-	@Override
 	public void buyTicket(IPerson person) {
 		numberOfSeats--;
 		tickets.get(numberOfSeats).registPerson(person);

@@ -18,6 +18,7 @@ import itisx.TicketSeller.View.FlightView;
 import itisx.TicketSeller.View.ListOfFlightView;
 import itisx.TicketSeller.View.NumberOfSeatsView;
 import itisx.TicketSeller.View.PersonRegistrationView;
+import itisx.TicketSeller.View.RepetitiveFlightView;
 import itisx.TicketSeller.View.SingleFlightRegistrationView;
 import itisx.TicketSeller.View.TicketRegistView;
 import itisx.TicketSeller.View.TypeOfFlightView;
@@ -25,6 +26,7 @@ import itisx.TicketSeller.View.Interface.IFlightView;
 import itisx.TicketSeller.View.Interface.IListOfFlightsView;
 import itisx.TicketSeller.View.Interface.INumberOfSeatsView;
 import itisx.TicketSeller.View.Interface.IPersonRegistrationView;
+import itisx.TicketSeller.View.Interface.IRepetitiveFlightView;
 import itisx.TicketSeller.View.Interface.ISingleFlightRegistrationView;
 import itisx.TicketSeller.View.Interface.ITicketRegistView;
 import itisx.TicketSeller.View.Interface.ITypeOfFlightView;
@@ -32,10 +34,12 @@ import itsix.TicketSeller.Controller.FlightController;
 import itsix.TicketSeller.Controller.IFlightController;
 import itsix.TicketSeller.Controller.INumberOfSeatsController;
 import itsix.TicketSeller.Controller.IPersonRegistrationController;
+import itsix.TicketSeller.Controller.IRepetitiveFlightController;
 import itsix.TicketSeller.Controller.ISingleFlightController;
 import itsix.TicketSeller.Controller.ITypeOfFlightController;
 import itsix.TicketSeller.Controller.NumberOfSeatsController;
 import itsix.TicketSeller.Controller.PersonRegistrationController;
+import itsix.TicketSeller.Controller.RepetitiveFlightController;
 import itsix.TicketSeller.Controller.SingleFlightController;
 import itsix.TicketSeller.Controller.TypeOfFlightController;
 
@@ -86,6 +90,11 @@ public class App {
 		singleFlightController.setBuildDate(buildDate);
 		IBuildPerson buildPerson = new BuildPerson(personRegistrationController);
 		personRegistrationController.setBuildPerson(buildPerson);
+		
+		IRepetitiveFlightController repetitiveFlightController = new RepetitiveFlightController(typeOfFlightView);
+		typeOfFlightView.setRepetitiveFlightController(repetitiveFlightController);
+		IRepetitiveFlightView repetitiveFlightView = new RepetitiveFlightView(repetitiveFlightController.getDayOfWeek(),repetitiveFlightController);
+		repetitiveFlightController.setRepetitiveFlightView(repetitiveFlightView);
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

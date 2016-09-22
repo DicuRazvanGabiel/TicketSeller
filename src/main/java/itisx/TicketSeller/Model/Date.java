@@ -15,21 +15,6 @@ public class Date implements IDate {
 	}
 
 	@Override
-	public Integer getDay() {
-		return day;
-	}
-
-	@Override
-	public Integer getMonth() {
-		return month;
-	}
-
-	@Override
-	public Integer getYear() {
-		return year;
-	}
-
-	@Override
 	public boolean isTheSame(IDate date) {
 		return date.isTheSame(day, month, year);
 	}

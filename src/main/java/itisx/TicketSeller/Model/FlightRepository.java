@@ -1,6 +1,9 @@
 package itisx.TicketSeller.Model;
 
 import java.awt.Container;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -9,14 +12,14 @@ import java.util.Set;
 import itisx.TicketSeller.View.ListOfFlightView;
 import itsix.TicketSeller.Controller.ISingleFlightController;
 
-public class FlightRepository implements IFlightRepository {
+public class FlightRepository implements IFlightRepository, java.io.Serializable {
 
 	private List<IFlight> listOfFlisght = new ArrayList<>();
 
 	List<ITicket> listOfticket = new ArrayList();
 
 	private ISingleFlightController singleFlightcontroller;
-	
+
 	private IFlight f1 = new Flight("Oslo", "Moscova", new Date(1, 1, 2016), listOfticket, 5, new Price(2.5, 5.0));
 	private IFlight f12 = new Flight("Ankara", "Roma", new Date(1, 1, 2016), listOfticket, 4, new Price(2.5, 5.0));
 	private IFlight f13 = new Flight("Viena", "Roma", new Date(1, 1, 2016), listOfticket, 2, new Price(2.5, 5.0));
@@ -27,8 +30,6 @@ public class FlightRepository implements IFlightRepository {
 	private IFlight f5 = new Flight("Viena", "Paris", new Date(3, 2, 2018), listOfticket, 5, new Price(2.5, 5.0));
 	private IFlight f6 = new Flight("Oslo", "Viena", new Date(15, 8, 2020), listOfticket, 5, new Price(2.5, 5.0));
 	private IFlight f7 = new Flight("Praga", "Moscova", new Date(6, 5, 2017), listOfticket, 5, new Price(2.5, 5.0));
-
-	
 
 	public FlightRepository() {
 		listOfticket.add(new Ticket("1a"));

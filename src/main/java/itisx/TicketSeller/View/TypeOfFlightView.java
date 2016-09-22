@@ -1,10 +1,12 @@
 package itisx.TicketSeller.View;
 
 import java.awt.EventQueue;
+import java.awt.Window;
 
 import javax.swing.JFrame;
 
 import itisx.TicketSeller.View.Interface.ITypeOfFlightView;
+import itsix.TicketSeller.Controller.IRepetitiveFlightController;
 import itsix.TicketSeller.Controller.ISingleFlightController;
 import itsix.TicketSeller.Controller.ITypeOfFlightController;
 
@@ -18,7 +20,9 @@ public class TypeOfFlightView implements ITypeOfFlightView{
 	
 	private ITypeOfFlightController typeOfFlightController;
 	
-	ISingleFlightController singleFlightController;
+	private ISingleFlightController singleFlightController;
+	
+	private IRepetitiveFlightController repetitiveFlightController;
 
 	public TypeOfFlightView() {
 		initialize();
@@ -43,6 +47,14 @@ public class TypeOfFlightView implements ITypeOfFlightView{
 		frame.getContentPane().add(singleFlightButton);
 		
 		JButton repetitiveFlightButton = new JButton("Repetitive flight");
+		repetitiveFlightButton.addActionListener(new ActionListener() {
+			
+
+			public void actionPerformed(ActionEvent e) {
+				repetitiveFlightController.setVisible(true);
+				setViseble(false);
+			}
+		});
 		repetitiveFlightButton.setBounds(108, 149, 218, 65);
 		frame.getContentPane().add(repetitiveFlightButton);
 		
@@ -64,6 +76,11 @@ public class TypeOfFlightView implements ITypeOfFlightView{
 	public void setSingleFlightcontroller(ISingleFlightController singleFlightcontroller) {
 		this.singleFlightController = singleFlightcontroller;
 		
+	}
+
+	@Override
+	public void setRepetitiveFlightController(IRepetitiveFlightController repetitiveFlightController) {
+		this.repetitiveFlightController = repetitiveFlightController;
 	}
 
 }

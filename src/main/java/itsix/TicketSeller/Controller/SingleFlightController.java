@@ -43,7 +43,7 @@ public class SingleFlightController implements ISingleFlightController {
 
 	private IBuildPrice buildPrice;
 
-	private IBuildTicket buidTicket;
+	private IBuildTicket buildTicket;
 
 	private IBuildDate buildDate;
 
@@ -74,7 +74,7 @@ public class SingleFlightController implements ISingleFlightController {
 
 	@Override
 	public void makeTicket() {
-		ITicket ticket = buidTicket.ticket(ticketRegistView.getSeat());
+		ITicket ticket = buildTicket.ticket(ticketRegistView.getSeat());
 		tickets.add(ticket);
 		seatsNumberAux--;
 		ticketRegistView.clear();
@@ -136,7 +136,7 @@ public class SingleFlightController implements ISingleFlightController {
 
 	@Override
 	public void setBuildTicket(IBuildTicket buidTicket) {
-		this.buidTicket = buidTicket;
+		this.buildTicket = buidTicket;
 		
 	}
 
