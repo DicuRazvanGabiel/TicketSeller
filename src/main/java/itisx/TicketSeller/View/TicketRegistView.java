@@ -9,6 +9,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 
 import itisx.TicketSeller.View.Interface.ITicketRegistView;
+import itsix.TicketSeller.Controller.IRepetitiveFlightController;
 import itsix.TicketSeller.Controller.ISingleFlightController;
 
 import javax.swing.JButton;
@@ -21,6 +22,7 @@ public class TicketRegistView implements ITicketRegistView {
 	private JTextField textField;
 	private JLabel seatsRemainingLabel;
 	private ISingleFlightController singleFlightcontroller;
+	private IRepetitiveFlightController repetitiveFlightController;
 
 	public TicketRegistView(ISingleFlightController singleFlightcontroller) {
 		this.singleFlightcontroller = singleFlightcontroller;
@@ -57,7 +59,11 @@ public class TicketRegistView implements ITicketRegistView {
 		JButton btnPk = new JButton("OK");
 		btnPk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try{
 				singleFlightcontroller.makeTicket();
+				}catch(NullPointerException e1){
+					repetitiveFlightController.makeTicket();
+				}
 			}
 		});
 		btnPk.setBounds(88, 136, 89, 23);
@@ -83,5 +89,10 @@ public class TicketRegistView implements ITicketRegistView {
 	@Override
 	public void setLabelSeats(Integer seatsNumber) {
 		seatsRemainingLabel.setText(String.valueOf(seatsNumber));
+	}
+
+	@Override
+	public void setRepetitiveFlightController(IRepetitiveFlightController repetitiveFlightController) {
+		this.repetitiveFlightController = repetitiveFlightController;
 	}
 }

@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SpinnerNumberModel;
 
 public class RepetitiveFlightView implements IRepetitiveFlightView{
 
@@ -31,7 +32,6 @@ public class RepetitiveFlightView implements IRepetitiveFlightView{
 	
 	private JSpinner numberOfSeatsSpinner;
 	
-	private IRepetitiveFlightController repetitivFlightController;
 
 	private IRepetitiveFlightController repetitiveFlightController;
 	
@@ -47,6 +47,7 @@ public class RepetitiveFlightView implements IRepetitiveFlightView{
 		frame.setBounds(100, 100, 423, 550);
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
 		
 		fromTextField = new JTextField();
 		fromTextField.setColumns(10);
@@ -75,6 +76,7 @@ public class RepetitiveFlightView implements IRepetitiveFlightView{
 		frame.getContentPane().add(label_2);
 		
 		numberOfSeatsSpinner = new JSpinner();
+		numberOfSeatsSpinner.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 		numberOfSeatsSpinner.setBounds(269, 225, 39, 20);
 		frame.getContentPane().add(numberOfSeatsSpinner);
 		
@@ -86,7 +88,7 @@ public class RepetitiveFlightView implements IRepetitiveFlightView{
 		JButton addTicketButton = new JButton("Add tickets");
 		addTicketButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				repetitivFlightController.getTicket((Integer) numberOfSeatsSpinner.getValue());
+				repetitiveFlightController.getTicket((Integer) numberOfSeatsSpinner.getValue());
 			}
 		});
 		addTicketButton.setBounds(222, 282, 105, 23);
@@ -117,7 +119,7 @@ public class RepetitiveFlightView implements IRepetitiveFlightView{
 			
 
 			public void actionPerformed(ActionEvent arg0) {
-				repetitivFlightController.registFlight();
+				repetitiveFlightController.registFlight();
 			}
 		});
 		finishButton.setBounds(151, 454, 89, 23);

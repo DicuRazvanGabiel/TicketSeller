@@ -84,8 +84,8 @@ public class App {
 		singleFlightController.setBuildFlight(buildFlight);
 		IBuildPrice buildPrice = new BuildPrice(singleFlightController);
 		singleFlightController.setBuildPrice(buildPrice);
-		IBuildTicket buidTicket = new BuildTicket(singleFlightController);
-		singleFlightController.setBuildTicket(buidTicket);
+		IBuildTicket buildTicket = new BuildTicket(singleFlightController);
+		singleFlightController.setBuildTicket(buildTicket);
 		IBuildDate buildDate = new BuildDate(singleFlightController);
 		singleFlightController.setBuildDate(buildDate);
 		IBuildPerson buildPerson = new BuildPerson(personRegistrationController);
@@ -95,6 +95,11 @@ public class App {
 		typeOfFlightView.setRepetitiveFlightController(repetitiveFlightController);
 		IRepetitiveFlightView repetitiveFlightView = new RepetitiveFlightView(repetitiveFlightController.getDayOfWeek(),repetitiveFlightController);
 		repetitiveFlightController.setRepetitiveFlightView(repetitiveFlightView);
+		ticketRegistView.setRepetitiveFlightController(repetitiveFlightController);
+		repetitiveFlightController.setTicketRegistView(ticketRegistView);
+		repetitiveFlightController.setBuidTicket(buildTicket);
+		buildTicket.setRepetitiveFlightController(repetitiveFlightController);
+		
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

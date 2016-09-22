@@ -1,5 +1,6 @@
 package itsix.TicketSeller.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import itisx.TicketSeller.Builder.IBuildFlight;
@@ -36,13 +37,15 @@ public class RepetitiveFlightController implements IRepetitiveFlightController {
 
 	private IBuildTicket buildTicket;
 
-	private List<ITicket> tickets;
+	private List<ITicket> tickets = new ArrayList();
 
 	private Integer seatsNumberAux;
 
 	private Integer numberOfseats;
 
 	private Integer seatsNumber;
+
+	private IBuildTicket buidTicket;
 
 	public RepetitiveFlightController(ITypeOfFlightView typeOfFlightView) {
 		this.typeOfFlightView = typeOfFlightView;
@@ -102,12 +105,22 @@ public class RepetitiveFlightController implements IRepetitiveFlightController {
 	}
 
 	@Override
-	public void getTicket(Integer value) {
+	public void getTicket(Integer numberOfseats) {
 		seatsNumberAux = numberOfseats;
 		seatsNumber = numberOfseats;
 		tickets.clear();
 		ticketRegistView.setVisible(true);
 		ticketRegistView.setLabelSeats(seatsNumberAux);
+	}
+
+	@Override
+	public void setTicketRegistView(ITicketRegistView ticketRegistView) {
+		this.ticketRegistView = ticketRegistView;
+	}
+
+	@Override
+	public void setBuidTicket(IBuildTicket buidTicket) {
+		this.buidTicket = buidTicket;
 	}
 
 }

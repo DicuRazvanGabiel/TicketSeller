@@ -1,5 +1,7 @@
 package itisx.TicketSeller.View.Interface;
 
+import itsix.TicketSeller.Controller.IRepetitiveFlightController;
+
 public interface ITicketRegistView {
 
 	void setVisible(boolean b);
@@ -9,5 +11,7 @@ public interface ITicketRegistView {
 	void clear();
 
 	void setLabelSeats(Integer seatsNumber);
+
+	void setRepetitiveFlightController(IRepetitiveFlightController repetitiveFlightController);
 
 }
