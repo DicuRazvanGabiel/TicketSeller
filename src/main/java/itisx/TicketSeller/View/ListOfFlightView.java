@@ -55,7 +55,7 @@ public class ListOfFlightView extends JFrame implements IListOfFlightsView{
 		}
 		
 		
-		JList<IFlight> list = new JList(listModel);
+		final JList<IFlight> list = new JList(listModel);
 		list.setBounds(10, 11, 575, 201);
 		list.setSelectedIndex(0);
 		frame.getContentPane().add(list);

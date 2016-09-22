@@ -39,7 +39,7 @@ public class NumberOfSeatsView implements INumberOfSeatsView {
 	/**
 	 * @wbp.parser.entryPoint
 	 */
-	private void initialize(IFlightWithEscale flight) {
+	private void initialize(final IFlightWithEscale flight) {
 		frmTicketsSeller = new JFrame();
 		frmTicketsSeller.setTitle("Tickets Seller");
 		frmTicketsSeller.setResizable(false);
@@ -47,7 +47,7 @@ public class NumberOfSeatsView implements INumberOfSeatsView {
 		frmTicketsSeller.getContentPane().setLayout(null);
 		frmTicketsSeller.setLocationRelativeTo(null);
 		
-		JLabel totalPriceLabel = new JLabel(String.valueOf(flight.getPriceAdult()));
+		final JLabel totalPriceLabel = new JLabel(String.valueOf(flight.getPriceAdult()));
 		totalPriceLabel.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		totalPriceLabel.setBounds(262, 194, 125, 45);
 		frmTicketsSeller.getContentPane().add(totalPriceLabel);
@@ -72,7 +72,7 @@ public class NumberOfSeatsView implements INumberOfSeatsView {
 		lblNumberOfSeats.setBounds(10, 145, 254, 45);
 		frmTicketsSeller.getContentPane().add(lblNumberOfSeats);
 
-		JSpinner numberOfSeatsChildrenSpinner = new JSpinner();
+		final JSpinner numberOfSeatsChildrenSpinner = new JSpinner();
 		numberOfSeatsChildrenSpinner.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
 				totalPriceLabel.setText(String.valueOf(calculateTotalPrice(flight,numberOfSeatsSpinner,numberOfSeatsChildrenSpinner)));

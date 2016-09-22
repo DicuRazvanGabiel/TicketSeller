@@ -21,4 +21,6 @@ public interface IFlightController {
 
 	void setSingleFlightcontroller(ISingleFlightController singleFlightcontroller);
 
+	void setRepetitiveFlightController(IRepetitiveFlightController repetitiveFlightController);
+
 }

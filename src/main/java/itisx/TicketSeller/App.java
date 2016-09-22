@@ -7,11 +7,13 @@ import itisx.TicketSeller.Builder.BuildFlight;
 import itisx.TicketSeller.Builder.BuildPerson;
 import itisx.TicketSeller.Builder.BuildPrice;
 import itisx.TicketSeller.Builder.BuildTicket;
+import itisx.TicketSeller.Builder.BuildWeeklyDate;
 import itisx.TicketSeller.Builder.IBuildDate;
 import itisx.TicketSeller.Builder.IBuildFlight;
 import itisx.TicketSeller.Builder.IBuildPerson;
 import itisx.TicketSeller.Builder.IBuildPrice;
 import itisx.TicketSeller.Builder.IBuildTicket;
+import itisx.TicketSeller.Builder.IBuildWeeklyDate;
 import itisx.TicketSeller.Model.FlightRepository;
 import itisx.TicketSeller.Model.IFlightRepository;
 import itisx.TicketSeller.View.FlightView;
@@ -49,8 +51,8 @@ public class App {
 
 		IFlightRepository flightRepository = new FlightRepository();
 		IListOfFlightsView listOfFlightsView = new ListOfFlightView();
-		IFlightController flightController = new FlightController(flightRepository);
-		IFlightView flightView = new FlightView(flightController, flightController.getMakeListFrom(), flightController.getMakeListTo());
+		final IFlightController flightController = new FlightController(flightRepository);
+		final IFlightView flightView = new FlightView(flightController, flightController.getMakeListFrom(), flightController.getMakeListTo());
 		flightController.setListOfFlightsView(listOfFlightsView);
 		
 		INumberOfSeatsController numberOfSeatsController = new NumberOfSeatsController(listOfFlightsView);
@@ -97,8 +99,16 @@ public class App {
 		repetitiveFlightController.setRepetitiveFlightView(repetitiveFlightView);
 		ticketRegistView.setRepetitiveFlightController(repetitiveFlightController);
 		repetitiveFlightController.setTicketRegistView(ticketRegistView);
+		
 		repetitiveFlightController.setBuidTicket(buildTicket);
-		buildTicket.setRepetitiveFlightController(repetitiveFlightController);
+		repetitiveFlightController.setFlightRepository(flightRepository);
+		repetitiveFlightController.setFlightController(flightController);
+		flightController.setRepetitiveFlightController(repetitiveFlightController);
+		
+		IBuildWeeklyDate buildWeklyDate = new BuildWeeklyDate();
+		repetitiveFlightController.setBuildWeklyDate(buildWeklyDate);
+		
+		
 		
 		
 		EventQueue.invokeLater(new Runnable() {

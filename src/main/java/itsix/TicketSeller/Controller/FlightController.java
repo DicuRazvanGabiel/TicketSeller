@@ -24,6 +24,8 @@ public class FlightController implements IFlightController {
 
 	private ISingleFlightController singleFlightcontroller;
 
+	private IRepetitiveFlightController repetitiveFlightController;
+
 	public FlightController(IFlightRepository flightRepository) {
 		this.flightRepository = flightRepository;
 	}
@@ -75,6 +77,11 @@ public class FlightController implements IFlightController {
 	@Override
 	public void setSingleFlightcontroller(ISingleFlightController singleFlightcontroller) {
 		this.singleFlightcontroller = singleFlightcontroller;
+	}
+
+	@Override
+	public void setRepetitiveFlightController(IRepetitiveFlightController repetitiveFlightController) {
+		this.repetitiveFlightController = repetitiveFlightController;
 	}
 
 }

@@ -8,6 +8,7 @@ import itsix.TicketSeller.Controller.ISingleFlightController;
 public class BuildTicket implements IBuildTicket {
 
 	private ISingleFlightController singleFlightcontroller;
+	
 	private IRepetitiveFlightController repetitiveFlightController;
 
 	public BuildTicket(ISingleFlightController singleFlightcontroller) {

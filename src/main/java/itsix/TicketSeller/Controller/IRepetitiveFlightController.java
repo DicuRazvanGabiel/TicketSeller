@@ -3,6 +3,8 @@ package itsix.TicketSeller.Controller;
 import java.util.List;
 
 import itisx.TicketSeller.Builder.IBuildTicket;
+import itisx.TicketSeller.Builder.IBuildWeeklyDate;
+import itisx.TicketSeller.Model.IFlightRepository;
 import itisx.TicketSeller.Model.ITicket;
 import itisx.TicketSeller.View.Interface.IRepetitiveFlightView;
 import itisx.TicketSeller.View.Interface.ITicketRegistView;
@@ -24,5 +26,11 @@ public interface IRepetitiveFlightController {
 	void setTicketRegistView(ITicketRegistView ticketRegistView);
 
 	void setBuidTicket(IBuildTicket buidTicket);
+
+	void setBuildWeklyDate(IBuildWeeklyDate buildWeklyDate);
+
+	void setFlightRepository(IFlightRepository flightRepository);
+
+	void setFlightController(IFlightController flightController);
 
 }

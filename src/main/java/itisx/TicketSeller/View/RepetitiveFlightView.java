@@ -120,6 +120,7 @@ public class RepetitiveFlightView implements IRepetitiveFlightView{
 
 			public void actionPerformed(ActionEvent arg0) {
 				repetitiveFlightController.registFlight();
+				frame.setVisible(false);
 			}
 		});
 		finishButton.setBounds(151, 454, 89, 23);

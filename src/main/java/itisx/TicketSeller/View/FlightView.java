@@ -90,7 +90,7 @@ public class FlightView extends JFrame implements IFlightView {
 		getContentPane().add(dateLabel);
 
 		daySpinner = new JSpinner();
-		daySpinner.setModel(new SpinnerNumberModel(1, 1, 30, 1));
+		daySpinner.setModel(new SpinnerNumberModel(1, 1, 31, 1));
 		daySpinner.setBounds(163, 157, 39, 20);
 		getContentPane().add(daySpinner);
 
