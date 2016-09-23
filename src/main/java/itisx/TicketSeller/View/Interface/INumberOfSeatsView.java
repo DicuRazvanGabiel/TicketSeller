@@ -10,5 +10,9 @@ public interface INumberOfSeatsView {
 
 	void setPersonRegistrationController(IPersonRegistrationController personRegistrationController);
 
+	void setTotalPrice(Double calculateTotalPrice);
+
+	void setSeatsAvalabel(Integer calculateSeatsAvalebal);
+
 
 }

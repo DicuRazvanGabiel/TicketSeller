@@ -29,16 +29,16 @@ public class NumberOfSeatsView implements INumberOfSeatsView {
 	private INumberOfSeatsController numberOfSeatsController;
 
 	private IPersonRegistrationController personRegistrationController;
+	
+	private JLabel totalPrice;
+	
+	private JLabel totalPriceLabel;
 
 
 	public NumberOfSeatsView(INumberOfSeatsController numberOfSeatsController) {
 		this.numberOfSeatsController = numberOfSeatsController;
 	}
 
-
-	/**
-	 * @wbp.parser.entryPoint
-	 */
 	private void initialize(final IFlightWithEscale flight) {
 		frmTicketsSeller = new JFrame();
 		frmTicketsSeller.setTitle("Tickets Seller");
@@ -47,7 +47,7 @@ public class NumberOfSeatsView implements INumberOfSeatsView {
 		frmTicketsSeller.getContentPane().setLayout(null);
 		frmTicketsSeller.setLocationRelativeTo(null);
 		
-		final JLabel totalPriceLabel = new JLabel(String.valueOf(flight.getPriceAdult()));
+		totalPriceLabel = new JLabel(String.valueOf(flight.getPriceAdult()));
 		totalPriceLabel.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		totalPriceLabel.setBounds(262, 194, 125, 45);
 		frmTicketsSeller.getContentPane().add(totalPriceLabel);
@@ -57,7 +57,7 @@ public class NumberOfSeatsView implements INumberOfSeatsView {
 		seatsAvalabelLabel.setBounds(10, 32, 148, 45);
 		frmTicketsSeller.getContentPane().add(seatsAvalabelLabel);
 
-		numberOfSeatsAvalabelLabel = new JLabel(String.valueOf(flight.getNumberOfSeats()));
+		numberOfSeatsAvalabelLabel = new JLabel(String.valueOf(flight.getNumberOfSeats()-1));
 		numberOfSeatsAvalabelLabel.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		numberOfSeatsAvalabelLabel.setBounds(262, 30, 125, 45);
 		frmTicketsSeller.getContentPane().add(numberOfSeatsAvalabelLabel);
@@ -75,14 +75,14 @@ public class NumberOfSeatsView implements INumberOfSeatsView {
 		final JSpinner numberOfSeatsChildrenSpinner = new JSpinner();
 		numberOfSeatsChildrenSpinner.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
-				totalPriceLabel.setText(String.valueOf(calculateTotalPrice(flight,numberOfSeatsSpinner,numberOfSeatsChildrenSpinner)));
+				numberOfSeatsController.updateView(flight,numberOfSeatsSpinner,numberOfSeatsChildrenSpinner);
 			}
 		});
 		numberOfSeatsChildrenSpinner.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), flight.getNumberOfSeats(), new Integer(1)));
 		numberOfSeatsChildrenSpinner.setBounds(262, 160, 66, 23);
 		frmTicketsSeller.getContentPane().add(numberOfSeatsChildrenSpinner);
 
-		JLabel totalPrice = new JLabel("Total price");
+		totalPrice = new JLabel("Total price");
 		totalPrice.setFont(new Font("Times New Roman", Font.PLAIN, 24));
 		totalPrice.setBounds(10, 194, 254, 45);
 		frmTicketsSeller.getContentPane().add(totalPrice);
@@ -91,7 +91,7 @@ public class NumberOfSeatsView implements INumberOfSeatsView {
 		numberOfSeatsSpinner.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), flight.getNumberOfSeats(), new Integer(1)));
 		numberOfSeatsSpinner.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
-				totalPriceLabel.setText(String.valueOf(calculateTotalPrice(flight,numberOfSeatsSpinner,numberOfSeatsChildrenSpinner)));
+				numberOfSeatsController.updateView(flight,numberOfSeatsSpinner,numberOfSeatsChildrenSpinner);
 			}
 		});
 		numberOfSeatsSpinner.setFont(new Font("Times New Roman", Font.PLAIN, 17));
@@ -107,11 +107,8 @@ public class NumberOfSeatsView implements INumberOfSeatsView {
 		});
 		nextButton.setBounds(149, 321, 89, 23);
 		frmTicketsSeller.getContentPane().add(nextButton);
-
 		frmTicketsSeller.setVisible(true);
 	}
-
-
 
 	@Override
 	public void makeVisible(IFlightWithEscale flight) {
@@ -119,16 +116,22 @@ public class NumberOfSeatsView implements INumberOfSeatsView {
 
 	}
 
-
-
 	@Override
 	public void setPersonRegistrationController(IPersonRegistrationController personRegistrationController) {
 		this.personRegistrationController = personRegistrationController;
 
 	}
-	
 
-	private Double calculateTotalPrice(IFlightWithEscale flight, JSpinner numberOfSeatsAdult, JSpinner numberOfSeatsChildren){
-		return flight.getPriceAdult()*(Integer)numberOfSeatsAdult.getValue() + flight.getPriceChildren()*(Integer)numberOfSeatsChildren.getValue();	
+	@Override
+	public void setTotalPrice(Double calculateTotalPrice) {
+		totalPriceLabel.setText(String.valueOf(calculateTotalPrice));
+		
+	}
+
+
+	@Override
+	public void setSeatsAvalabel(Integer calculateSeatsAvalebal) {
+		numberOfSeatsAvalabelLabel.setText(String.valueOf(calculateSeatsAvalebal));
+		
 	}
 }
