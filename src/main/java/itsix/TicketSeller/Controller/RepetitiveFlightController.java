@@ -32,8 +32,6 @@ public class RepetitiveFlightController implements IRepetitiveFlightController {
 
 	private IBuildFlight buildFlight;
 
-	private IBuildWeeklyDate buildWeeklyDate;
-	
 	private IBuildPrice buildPrice;
 
 	private ITicketRegistView ticketRegistView;
@@ -48,8 +46,6 @@ public class RepetitiveFlightController implements IRepetitiveFlightController {
 
 	private Integer seatsNumber;
 
-	private IBuildTicket buidTicket;
-
 	private IBuildWeeklyDate buildWeklyDate;
 
 	private IFlightController flightController;
@@ -60,8 +56,7 @@ public class RepetitiveFlightController implements IRepetitiveFlightController {
 
 	@Override
 	public void registFlight() {
-		//flightRepository.add(buildFlight.weeklyFlight(repetitiveFlightView.getFrom(), repetitiveFlightView.getTo(),makeDate(), tickets, seatsNumber,makePrice()));
-		flightRepository.add(new Flight(repetitiveFlightView.getFrom(), repetitiveFlightView.getTo(),makeDate(), tickets, seatsNumber,makePrice()));
+		flightRepository.add(buildFlight.weeklyFlight(repetitiveFlightView.getFrom(), repetitiveFlightView.getTo(),makeDate(), tickets, seatsNumber,makePrice()));
 		flightController.refreshView();
 	}
 
@@ -73,14 +68,12 @@ public class RepetitiveFlightController implements IRepetitiveFlightController {
 				break;
 			}
 		}
-		return new WeeklyDate(aux);
-				//buildWeeklyDate.date(aux);
+		return buildWeklyDate.date(aux);
 	}
 
 	private IPrice makePrice() {
 		
-		return new Price(repetitiveFlightView.getAdultPrice(), repetitiveFlightView.getChildrenPrice());
-				//buildPrice.price(repetitiveFlightView.getAdultPrice(), repetitiveFlightView.getChildrenPrice());
+		return  buildPrice.price(repetitiveFlightView.getAdultPrice(), repetitiveFlightView.getChildrenPrice());
 	}
 
 
@@ -101,8 +94,7 @@ public class RepetitiveFlightController implements IRepetitiveFlightController {
 
 	@Override
 	public void makeTicket() {
-//		ITicket ticket = buildTicket.ticket(ticketRegistView.getSeat());
-		ITicket ticket = new Ticket(ticketRegistView.getSeat());
+		ITicket ticket = buildTicket.ticket(ticketRegistView.getSeat());
 		tickets.add(ticket);
 		seatsNumberAux--;
 		ticketRegistView.clear();
@@ -131,7 +123,7 @@ public class RepetitiveFlightController implements IRepetitiveFlightController {
 
 	@Override
 	public void setBuidTicket(IBuildTicket buidTicket) {
-		this.buidTicket = buidTicket;
+		this.buildTicket = buidTicket;
 	}
 
 	@Override
@@ -149,6 +141,17 @@ public class RepetitiveFlightController implements IRepetitiveFlightController {
 	@Override
 	public void setFlightController(IFlightController flightController) {
 		this.flightController = flightController;
+		
+	}
+
+	@Override
+	public void setBuildPrice(IBuildPrice buildPrice) {
+		this.buildPrice = buildPrice;
+	}
+
+	@Override
+	public void setBuildFlight(IBuildFlight buildFlight) {
+		this.buildFlight = buildFlight;
 		
 	}
 

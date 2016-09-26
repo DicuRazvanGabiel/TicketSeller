@@ -100,14 +100,17 @@ public class App {
 		ticketRegistView.setRepetitiveFlightController(repetitiveFlightController);
 		repetitiveFlightController.setTicketRegistView(ticketRegistView);
 		
-		repetitiveFlightController.setBuidTicket(buildTicket);
+		
 		repetitiveFlightController.setFlightRepository(flightRepository);
 		repetitiveFlightController.setFlightController(flightController);
 		flightController.setRepetitiveFlightController(repetitiveFlightController);
 		
+		
+		repetitiveFlightController.setBuidTicket(buildTicket);
 		IBuildWeeklyDate buildWeklyDate = new BuildWeeklyDate();
 		repetitiveFlightController.setBuildWeklyDate(buildWeklyDate);
-		
+		repetitiveFlightController.setBuildPrice(buildPrice);
+		repetitiveFlightController.setBuildFlight(buildFlight);
 		
 		
 		
