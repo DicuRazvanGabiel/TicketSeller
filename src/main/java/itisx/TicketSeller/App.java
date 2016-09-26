@@ -20,6 +20,7 @@ import itisx.TicketSeller.Model.IFlightRepository;
 import itisx.TicketSeller.Model.RepositorySerializator;
 import itisx.TicketSeller.View.FlightView;
 import itisx.TicketSeller.View.ListOfFlightView;
+import itisx.TicketSeller.View.ListRemoveFlightView;
 import itisx.TicketSeller.View.NumberOfSeatsView;
 import itisx.TicketSeller.View.PersonRegistrationView;
 import itisx.TicketSeller.View.RepetitiveFlightView;
@@ -28,6 +29,7 @@ import itisx.TicketSeller.View.TicketRegistView;
 import itisx.TicketSeller.View.TypeOfFlightView;
 import itisx.TicketSeller.View.Interface.IFlightView;
 import itisx.TicketSeller.View.Interface.IListOfFlightsView;
+import itisx.TicketSeller.View.Interface.IListRemoveFlightView;
 import itisx.TicketSeller.View.Interface.INumberOfSeatsView;
 import itisx.TicketSeller.View.Interface.IPersonRegistrationView;
 import itisx.TicketSeller.View.Interface.IRepetitiveFlightView;
@@ -36,11 +38,13 @@ import itisx.TicketSeller.View.Interface.ITicketRegistView;
 import itisx.TicketSeller.View.Interface.ITypeOfFlightView;
 import itsix.TicketSeller.Controller.FlightController;
 import itsix.TicketSeller.Controller.IFlightController;
+import itsix.TicketSeller.Controller.IListRemoveFlightController;
 import itsix.TicketSeller.Controller.INumberOfSeatsController;
 import itsix.TicketSeller.Controller.IPersonRegistrationController;
 import itsix.TicketSeller.Controller.IRepetitiveFlightController;
 import itsix.TicketSeller.Controller.ISingleFlightController;
 import itsix.TicketSeller.Controller.ITypeOfFlightController;
+import itsix.TicketSeller.Controller.ListRemoveFlightController;
 import itsix.TicketSeller.Controller.NumberOfSeatsController;
 import itsix.TicketSeller.Controller.PersonRegistrationController;
 import itsix.TicketSeller.Controller.RepetitiveFlightController;
@@ -58,9 +62,12 @@ public class App {
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();
 		}catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
+		
+		
 		
 		
 		IListOfFlightsView listOfFlightsView = new ListOfFlightView();
@@ -68,6 +75,18 @@ public class App {
 		final IFlightView flightView = new FlightView(flightController, flightController.getMakeListFrom(), flightController.getMakeListTo());
 		flightController.setListOfFlightsView(listOfFlightsView);
 		flightController.setRepositorySerializator(repositorySerializator);
+		
+		
+		
+		IListRemoveFlightController listRemoveFlightController = new ListRemoveFlightController(flightView);
+		flightView.setListRemoveFlightController(listRemoveFlightController);
+		listRemoveFlightController.setFlightRepository(flightRepository);
+		
+		IListRemoveFlightView listRemoveFlightView = new ListRemoveFlightView(listRemoveFlightController);
+		
+		listRemoveFlightController.setListRemoveFlightView(listRemoveFlightView);
+		flightRepository.setListRemoveFlightController(listRemoveFlightController);
+		
 		
 		
 		
@@ -127,6 +146,18 @@ public class App {
 		repetitiveFlightController.setBuildWeklyDate(buildWeklyDate);
 		repetitiveFlightController.setBuildPrice(buildPrice);
 		repetitiveFlightController.setBuildFlight(buildFlight);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

@@ -37,9 +37,7 @@ public class ListOfFlightView extends JFrame implements IListOfFlightsView{
 		frame.setVisible(true);
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+
 	private void initialize(List<IFlightWithEscale> flights) {
 		frame = new JFrame();
 		frame.setResizable(false);

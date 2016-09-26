@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import itisx.TicketSeller.Model.IDate;
 import itsix.TicketSeller.Controller.IFlightController;
+import itsix.TicketSeller.Controller.IListRemoveFlightController;
 import itsix.TicketSeller.Controller.ITypeOfFlightController;
 
 public interface IFlightView extends Serializable{
@@ -19,5 +20,7 @@ public interface IFlightView extends Serializable{
 	void setTypeOfFlightController(ITypeOfFlightController typeOfFlightController);
 
 	void refresh();
+
+	void setListRemoveFlightController(IListRemoveFlightController listRemoveFlightController);
 
 }

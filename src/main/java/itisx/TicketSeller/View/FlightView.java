@@ -17,7 +17,9 @@ import itisx.TicketSeller.Model.IDate;
 import itisx.TicketSeller.Model.IFlightRepository;
 import itisx.TicketSeller.Model.RepositorySerializator;
 import itisx.TicketSeller.View.Interface.IFlightView;
+import itisx.TicketSeller.View.Interface.IListRemoveFlightView;
 import itsix.TicketSeller.Controller.IFlightController;
+import itsix.TicketSeller.Controller.IListRemoveFlightController;
 import itsix.TicketSeller.Controller.ITypeOfFlightController;
 
 import java.awt.event.ActionListener;
@@ -48,6 +50,8 @@ public class FlightView extends JFrame implements IFlightView {
 	
 	private ITypeOfFlightController typeOfFlightController;
 
+	private IListRemoveFlightController listRemoveFlightController;
+
 	
 
 	public FlightView(IFlightController flightController, List<String> listOfStart, List<String> listOfEnd) {
@@ -55,9 +59,7 @@ public class FlightView extends JFrame implements IFlightView {
 		this.flightController = flightController;
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+
 	private void initialize(List<String> listOfStart, List<String> listOfEnd) {
 		setTitle("Ticket Seller");
 		setResizable(false);
@@ -137,8 +139,22 @@ public class FlightView extends JFrame implements IFlightView {
 				typeOfFlightController.setViseble(true);
 			}
 		});
-		sddFlightButton.setBounds(384, 287, 89, 23);
+		sddFlightButton.setBounds(361, 253, 112, 23);
 		getContentPane().add(sddFlightButton);
+		
+		JButton btnRemoveFlight = new JButton("Remove flight");
+		btnRemoveFlight.addActionListener(new ActionListener() {
+			private IListRemoveFlightController listRemoveFlightController;
+
+			public void actionPerformed(ActionEvent arg0) {
+				listRemoveFlightController.makeVisible();
+			}
+		});
+		
+		
+		btnRemoveFlight.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnRemoveFlight.setBounds(361, 287, 112, 23);
+		getContentPane().add(btnRemoveFlight);
 		setVisible(true);
 		setLocationRelativeTo(null);
 		
@@ -149,13 +165,6 @@ public class FlightView extends JFrame implements IFlightView {
 			@Override
 		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
 				flightController.serialize();
-				
-//		    	try {
-//					repositorySerializator.serialize(flightRepository);
-//				} catch (IOException e) {
-//					
-//					e.printStackTrace();
-//				}
 		    	setVisible(false);
 		    	dispose();
 		    }
@@ -198,6 +207,9 @@ public class FlightView extends JFrame implements IFlightView {
 		startComboBox.setModel(new DefaultComboBoxModel(flightController.getMakeListFrom().toArray()));
 		endComboBox.setModel(new DefaultComboBoxModel<>(flightController.getMakeListTo().toArray()));
 	}
-	
-	
+
+	@Override
+	public void setListRemoveFlightController(IListRemoveFlightController listRemoveFlightController) {
+		this.listRemoveFlightController = listRemoveFlightController;
+	}
 }

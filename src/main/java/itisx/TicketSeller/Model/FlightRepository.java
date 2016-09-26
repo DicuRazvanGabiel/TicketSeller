@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 import itisx.TicketSeller.View.ListOfFlightView;
+import itsix.TicketSeller.Controller.IListRemoveFlightController;
 import itsix.TicketSeller.Controller.ISingleFlightController;
 
 public class FlightRepository implements IFlightRepository {
@@ -30,6 +31,8 @@ public class FlightRepository implements IFlightRepository {
 	private IFlight f5 = new Flight("Viena", "Paris", new Date(3, 2, 2018), listOfticket, 5, new Price(2.5, 5.0));
 	private IFlight f6 = new Flight("Oslo", "Viena", new Date(15, 8, 2020), listOfticket, 5, new Price(2.5, 5.0));
 	private IFlight f7 = new Flight("Praga", "Moscova", new Date(6, 5, 2017), listOfticket, 5, new Price(2.5, 5.0));
+
+	private IListRemoveFlightController listRemoveFlightController;
 
 	public FlightRepository() {
 		listOfticket.add(new Ticket("1a"));
@@ -122,4 +125,24 @@ public class FlightRepository implements IFlightRepository {
 		this.singleFlightcontroller = singleFlightcontroller;
 	}
 
+	@Override
+	public List<IFlight> getFlights() {
+		return listOfFlisght;
+	}
+
+	@Override
+	public void removeFlight(IFlight selectedValue) {
+		Integer auxIndex = null;
+		for (int i = 0; i < listOfFlisght.size(); i++) {
+			if (listOfFlisght.get(i).equals(selectedValue)) {
+				auxIndex = i;
+			}
+		}
+		listOfFlisght.remove(auxIndex);
+	}
+
+	@Override
+	public void setListRemoveFlightController(IListRemoveFlightController listRemoveFlightController) {
+		this.listRemoveFlightController = listRemoveFlightController;
+	}
 }
