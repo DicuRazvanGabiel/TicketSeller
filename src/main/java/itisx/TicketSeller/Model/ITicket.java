@@ -1,6 +1,8 @@
 package itisx.TicketSeller.Model;
 
-public interface ITicket {
+import java.io.Serializable;
+
+public interface ITicket extends Serializable{
 
 	void registPerson(IPerson person);
 

@@ -1,8 +1,10 @@
 package itisx.TicketSeller.View.Interface;
 
+import java.io.Serializable;
+
 import itsix.TicketSeller.Controller.IPersonRegistrationController;
 
-public interface IPersonRegistrationView {
+public interface IPersonRegistrationView extends Serializable{
 
 	void makeVesible();
 

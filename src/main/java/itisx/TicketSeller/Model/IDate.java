@@ -1,6 +1,8 @@
 package itisx.TicketSeller.Model;
 
-public interface IDate {
+import java.io.Serializable;
+
+public interface IDate extends Serializable{
 
 	boolean isTheSame(IDate date);
 

@@ -12,7 +12,7 @@ import java.util.Set;
 import itisx.TicketSeller.View.ListOfFlightView;
 import itsix.TicketSeller.Controller.ISingleFlightController;
 
-public class FlightRepository implements IFlightRepository, java.io.Serializable {
+public class FlightRepository implements IFlightRepository {
 
 	private List<IFlight> listOfFlisght = new ArrayList<>();
 

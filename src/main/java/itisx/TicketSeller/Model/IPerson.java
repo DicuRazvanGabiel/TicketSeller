@@ -1,6 +1,8 @@
 package itisx.TicketSeller.Model;
 
-public interface IPerson {
+import java.io.Serializable;
+
+public interface IPerson extends Serializable{
 
 	void setFirstName(String firstName);
 

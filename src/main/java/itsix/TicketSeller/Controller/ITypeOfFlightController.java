@@ -1,6 +1,8 @@
 package itsix.TicketSeller.Controller;
 
-public interface ITypeOfFlightController {
+import java.io.Serializable;
+
+public interface ITypeOfFlightController extends Serializable{
 
 	void setViseble(boolean b);
 

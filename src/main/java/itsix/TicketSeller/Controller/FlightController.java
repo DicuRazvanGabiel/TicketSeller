@@ -1,5 +1,6 @@
 package itsix.TicketSeller.Controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import itisx.TicketSeller.Model.IDate;
 import itisx.TicketSeller.Model.IFlight;
 import itisx.TicketSeller.Model.IFlightRepository;
 import itisx.TicketSeller.Model.IFlightWithEscale;
+import itisx.TicketSeller.Model.RepositorySerializator;
 import itisx.TicketSeller.View.ListOfFlightView;
 import itisx.TicketSeller.View.Interface.IFlightView;
 import itisx.TicketSeller.View.Interface.IListOfFlightsView;
@@ -25,6 +27,8 @@ public class FlightController implements IFlightController {
 	private ISingleFlightController singleFlightcontroller;
 
 	private IRepetitiveFlightController repetitiveFlightController;
+
+	private RepositorySerializator repositorySerializator;
 
 	public FlightController(IFlightRepository flightRepository) {
 		this.flightRepository = flightRepository;
@@ -82,6 +86,23 @@ public class FlightController implements IFlightController {
 	@Override
 	public void setRepetitiveFlightController(IRepetitiveFlightController repetitiveFlightController) {
 		this.repetitiveFlightController = repetitiveFlightController;
+	}
+
+	@Override
+	public void serialize() {
+		try {
+			repositorySerializator.serialize(flightRepository);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void setRepositorySerializator(RepositorySerializator repositorySerializator) {
+		this.repositorySerializator = repositorySerializator;
+		
 	}
 
 }

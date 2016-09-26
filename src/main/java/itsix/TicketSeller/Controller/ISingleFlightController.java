@@ -1,5 +1,7 @@
 package itsix.TicketSeller.Controller;
 
+import java.io.Serializable;
+
 import itisx.TicketSeller.Builder.IBuildDate;
 import itisx.TicketSeller.Builder.IBuildFlight;
 import itisx.TicketSeller.Builder.IBuildPrice;
@@ -7,7 +9,7 @@ import itisx.TicketSeller.Builder.IBuildTicket;
 import itisx.TicketSeller.Model.IFlightRepository;
 import itisx.TicketSeller.View.Interface.ITicketRegistView;
 
-public interface ISingleFlightController {
+public interface ISingleFlightController extends Serializable {
 
 	void setViseble(boolean b);
 

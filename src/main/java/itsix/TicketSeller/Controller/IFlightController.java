@@ -1,11 +1,13 @@
 package itsix.TicketSeller.Controller;
 
+import java.io.Serializable;
 import java.util.List;
 
+import itisx.TicketSeller.Model.RepositorySerializator;
 import itisx.TicketSeller.View.Interface.IFlightView;
 import itisx.TicketSeller.View.Interface.IListOfFlightsView;
 
-public interface IFlightController {
+public interface IFlightController extends Serializable{
 
 	void searchFlights();
 
@@ -22,5 +24,9 @@ public interface IFlightController {
 	void setSingleFlightcontroller(ISingleFlightController singleFlightcontroller);
 
 	void setRepetitiveFlightController(IRepetitiveFlightController repetitiveFlightController);
+
+	void serialize();
+
+	void setRepositorySerializator(RepositorySerializator repositorySerializator);
 
 }

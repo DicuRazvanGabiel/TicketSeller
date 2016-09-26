@@ -14,11 +14,14 @@ import javax.swing.SpinnerNumberModel;
 
 import itisx.TicketSeller.Model.Date;
 import itisx.TicketSeller.Model.IDate;
+import itisx.TicketSeller.Model.IFlightRepository;
+import itisx.TicketSeller.Model.RepositorySerializator;
 import itisx.TicketSeller.View.Interface.IFlightView;
 import itsix.TicketSeller.Controller.IFlightController;
 import itsix.TicketSeller.Controller.ITypeOfFlightController;
 
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
@@ -138,6 +141,25 @@ public class FlightView extends JFrame implements IFlightView {
 		getContentPane().add(sddFlightButton);
 		setVisible(true);
 		setLocationRelativeTo(null);
+		
+		addWindowListener(new java.awt.event.WindowAdapter() {
+		    private RepositorySerializator repositorySerializator;
+			private IFlightRepository flightRepository;
+
+			@Override
+		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+				flightController.serialize();
+				
+//		    	try {
+//					repositorySerializator.serialize(flightRepository);
+//				} catch (IOException e) {
+//					
+//					e.printStackTrace();
+//				}
+		    	setVisible(false);
+		    	dispose();
+		    }
+		});
 	}
 
 	@Override
@@ -176,4 +198,6 @@ public class FlightView extends JFrame implements IFlightView {
 		startComboBox.setModel(new DefaultComboBoxModel(flightController.getMakeListFrom().toArray()));
 		endComboBox.setModel(new DefaultComboBoxModel<>(flightController.getMakeListTo().toArray()));
 	}
+	
+	
 }

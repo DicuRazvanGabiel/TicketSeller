@@ -1,6 +1,8 @@
 package itisx.TicketSeller.Model;
 
-public interface IFlight {
+import java.io.Serializable;
+
+public interface IFlight extends Serializable {
 
 	boolean isFlying(String from, String to, IDate date);
 

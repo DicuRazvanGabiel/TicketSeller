@@ -1,12 +1,14 @@
 package itsix.TicketSeller.Controller;
 
+import java.io.Serializable;
+
 import itisx.TicketSeller.Builder.IBuildPerson;
 import itisx.TicketSeller.Model.IFlight;
 import itisx.TicketSeller.Model.IFlightWithEscale;
 import itisx.TicketSeller.Model.IPerson;
 import itisx.TicketSeller.View.Interface.IPersonRegistrationView;
 
-public interface IPersonRegistrationController {
+public interface IPersonRegistrationController extends Serializable{
 
 	void setPerson();
 

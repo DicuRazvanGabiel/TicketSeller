@@ -1,6 +1,8 @@
 package itisx.TicketSeller.Model;
 
-public interface IFlightWithEscale {
+import java.io.Serializable;
+
+public interface IFlightWithEscale extends Serializable {
 
 	void addFlight(IFlight flightFrom);
 

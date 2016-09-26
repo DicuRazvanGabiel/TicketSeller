@@ -1,6 +1,8 @@
 package itisx.TicketSeller.Model;
 
-public interface IPrice {
+import java.io.Serializable;
+
+public interface IPrice extends Serializable{
 
 	Double getPriceChildren();
 

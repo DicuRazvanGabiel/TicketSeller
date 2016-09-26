@@ -1,6 +1,8 @@
 package itisx.TicketSeller.View.Interface;
 
-public interface IRepetitiveFlightView {
+import java.io.Serializable;
+
+public interface IRepetitiveFlightView extends Serializable{
 
 	void setVisible(boolean b);
 

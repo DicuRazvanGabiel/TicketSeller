@@ -1,5 +1,6 @@
 package itsix.TicketSeller.Controller;
 
+import java.io.Serializable;
 import java.util.List;
 
 import itisx.TicketSeller.Builder.IBuildFlight;
@@ -11,7 +12,7 @@ import itisx.TicketSeller.Model.ITicket;
 import itisx.TicketSeller.View.Interface.IRepetitiveFlightView;
 import itisx.TicketSeller.View.Interface.ITicketRegistView;
 
-public interface IRepetitiveFlightController {
+public interface IRepetitiveFlightController extends Serializable{
 
 	void registFlight();
 

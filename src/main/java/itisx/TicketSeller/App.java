@@ -1,6 +1,7 @@
 package itisx.TicketSeller;
 
 import java.awt.EventQueue;
+import java.io.IOException;
 
 import itisx.TicketSeller.Builder.BuildDate;
 import itisx.TicketSeller.Builder.BuildFlight;
@@ -16,6 +17,7 @@ import itisx.TicketSeller.Builder.IBuildTicket;
 import itisx.TicketSeller.Builder.IBuildWeeklyDate;
 import itisx.TicketSeller.Model.FlightRepository;
 import itisx.TicketSeller.Model.IFlightRepository;
+import itisx.TicketSeller.Model.RepositorySerializator;
 import itisx.TicketSeller.View.FlightView;
 import itisx.TicketSeller.View.ListOfFlightView;
 import itisx.TicketSeller.View.NumberOfSeatsView;
@@ -50,10 +52,24 @@ public class App {
 	public static void main(String[] args) {
 
 		IFlightRepository flightRepository = new FlightRepository();
+		RepositorySerializator repositorySerializator = new RepositorySerializator(flightRepository);
+		try{
+			flightRepository = repositorySerializator.deserialize();
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		IListOfFlightsView listOfFlightsView = new ListOfFlightView();
 		final IFlightController flightController = new FlightController(flightRepository);
 		final IFlightView flightView = new FlightView(flightController, flightController.getMakeListFrom(), flightController.getMakeListTo());
 		flightController.setListOfFlightsView(listOfFlightsView);
+		flightController.setRepositorySerializator(repositorySerializator);
+		
+		
 		
 		INumberOfSeatsController numberOfSeatsController = new NumberOfSeatsController(listOfFlightsView);
 		INumberOfSeatsView  numberOfSeatsView = new NumberOfSeatsView(numberOfSeatsController);
@@ -111,8 +127,6 @@ public class App {
 		repetitiveFlightController.setBuildWeklyDate(buildWeklyDate);
 		repetitiveFlightController.setBuildPrice(buildPrice);
 		repetitiveFlightController.setBuildFlight(buildFlight);
-		
-		
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

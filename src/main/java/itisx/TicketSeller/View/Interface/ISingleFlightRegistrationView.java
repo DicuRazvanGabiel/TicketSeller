@@ -1,8 +1,10 @@
 package itisx.TicketSeller.View.Interface;
 
+import java.io.Serializable;
+
 import itsix.TicketSeller.Controller.ISingleFlightController;
 
-public interface ISingleFlightRegistrationView {
+public interface ISingleFlightRegistrationView extends Serializable{
 
 	void setViseble(boolean b);
 
