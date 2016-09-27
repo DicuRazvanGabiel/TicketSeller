@@ -8,8 +8,6 @@ public interface IListRemoveFlightView extends Serializable {
 
 	void makeVisible(boolean b);
 
-	void refresh();
-
 	void removeFlight(IFlight selectedValue);
 
 }

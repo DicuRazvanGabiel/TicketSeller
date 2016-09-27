@@ -22,10 +22,14 @@ import javax.swing.JScrollPane;
 public class ListRemoveFlightView implements IListRemoveFlightView{
 
 	private JFrame frame;
+	
 	private IListRemoveFlightController listRemoveFlightController;
+	
 	private JList list;
-	List<IFlight> flights = new ArrayList();
-	DefaultListModel<IFlight> listModel;
+	
+	private List<IFlight> flights = new ArrayList();
+	
+	private DefaultListModel<IFlight> listModel;
 
 
 	public ListRemoveFlightView(IListRemoveFlightController listRemoveFlightController) {
@@ -77,13 +81,6 @@ public class ListRemoveFlightView implements IListRemoveFlightView{
 		frame.setVisible(true);
 		
 	}
-
-
-	@Override
-	public void refresh() {
-		
-	}
-
 
 	@Override
 	public void removeFlight(IFlight selectedValue) {

@@ -57,26 +57,19 @@ public class App {
 
 		IFlightRepository flightRepository = new FlightRepository();
 		RepositorySerializator repositorySerializator = new RepositorySerializator(flightRepository);
-//		try{
-//			flightRepository = repositorySerializator.deserialize();
-//		}catch(ClassNotFoundException e){
-//			e.printStackTrace();
-//		}catch (IOException e) {
-//			e.printStackTrace();
-//		}
-		
-		
-		
-		
-		
+		try{
+			flightRepository = repositorySerializator.deserialize();
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		IListOfFlightsView listOfFlightsView = new ListOfFlightView();
 		final IFlightController flightController = new FlightController(flightRepository);
 		final IFlightView flightView = new FlightView(flightController, flightController.getMakeListFrom(), flightController.getMakeListTo());
 		flightController.setListOfFlightsView(listOfFlightsView);
 		flightController.setRepositorySerializator(repositorySerializator);
-		
-		
 		
 		IListRemoveFlightController listRemoveFlightController = new ListRemoveFlightController(flightView);
 		flightView.setListRemoveFlightController(listRemoveFlightController);
@@ -86,9 +79,6 @@ public class App {
 		
 		listRemoveFlightController.setListRemoveFlightView(listRemoveFlightView);
 		flightRepository.setListRemoveFlightController(listRemoveFlightController);
-		
-		
-		
 		
 		INumberOfSeatsController numberOfSeatsController = new NumberOfSeatsController(listOfFlightsView);
 		INumberOfSeatsView  numberOfSeatsView = new NumberOfSeatsView(numberOfSeatsController);
@@ -135,29 +125,15 @@ public class App {
 		ticketRegistView.setRepetitiveFlightController(repetitiveFlightController);
 		repetitiveFlightController.setTicketRegistView(ticketRegistView);
 		
-		
 		repetitiveFlightController.setFlightRepository(flightRepository);
 		repetitiveFlightController.setFlightController(flightController);
 		flightController.setRepetitiveFlightController(repetitiveFlightController);
-		
 		
 		repetitiveFlightController.setBuidTicket(buildTicket);
 		IBuildWeeklyDate buildWeklyDate = new BuildWeeklyDate();
 		repetitiveFlightController.setBuildWeklyDate(buildWeklyDate);
 		repetitiveFlightController.setBuildPrice(buildPrice);
 		repetitiveFlightController.setBuildFlight(buildFlight);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

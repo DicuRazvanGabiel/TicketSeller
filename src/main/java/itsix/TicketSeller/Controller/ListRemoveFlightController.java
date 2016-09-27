@@ -48,7 +48,6 @@ public class ListRemoveFlightController implements IListRemoveFlightController {
 	@Override
 	public void updateView() {
 		flightView.refresh();
-		listRemoveFlightView.refresh();
 	}
 
 }
