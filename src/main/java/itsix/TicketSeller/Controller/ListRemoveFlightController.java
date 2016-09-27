@@ -31,6 +31,7 @@ public class ListRemoveFlightController implements IListRemoveFlightController {
 	@Override
 	public void removeFlight(IFlight selectedValue) {
 		flightRepository.removeFlight(selectedValue);
+		listRemoveFlightView.removeFlight(selectedValue);
 		
 	}
 
@@ -47,6 +48,7 @@ public class ListRemoveFlightController implements IListRemoveFlightController {
 	@Override
 	public void updateView() {
 		flightView.refresh();
+		listRemoveFlightView.refresh();
 	}
 
 }

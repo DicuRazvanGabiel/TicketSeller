@@ -144,7 +144,6 @@ public class FlightView extends JFrame implements IFlightView {
 		
 		JButton btnRemoveFlight = new JButton("Remove flight");
 		btnRemoveFlight.addActionListener(new ActionListener() {
-			private IListRemoveFlightController listRemoveFlightController;
 
 			public void actionPerformed(ActionEvent arg0) {
 				listRemoveFlightController.makeVisible();

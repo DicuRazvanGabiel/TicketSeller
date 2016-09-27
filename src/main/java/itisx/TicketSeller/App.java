@@ -57,13 +57,13 @@ public class App {
 
 		IFlightRepository flightRepository = new FlightRepository();
 		RepositorySerializator repositorySerializator = new RepositorySerializator(flightRepository);
-		try{
-			flightRepository = repositorySerializator.deserialize();
-		}catch(ClassNotFoundException e){
-			e.printStackTrace();
-		}catch (IOException e) {
-			e.printStackTrace();
-		}
+//		try{
+//			flightRepository = repositorySerializator.deserialize();
+//		}catch(ClassNotFoundException e){
+//			e.printStackTrace();
+//		}catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		
 		
 		

@@ -77,4 +77,9 @@ public class Flight implements IFlight {
 		return price.getPriceAdult();
 	}
 
+	@Override
+	public String toString() {
+		return "From " + from + " To " + to + " numberOfSeats "
+				+ numberOfSeats;
+	}
 }

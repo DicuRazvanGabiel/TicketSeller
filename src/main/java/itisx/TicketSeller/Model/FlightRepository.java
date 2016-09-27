@@ -132,13 +132,7 @@ public class FlightRepository implements IFlightRepository {
 
 	@Override
 	public void removeFlight(IFlight selectedValue) {
-		Integer auxIndex = null;
-		for (int i = 0; i < listOfFlisght.size(); i++) {
-			if (listOfFlisght.get(i).equals(selectedValue)) {
-				auxIndex = i;
-			}
-		}
-		listOfFlisght.remove(auxIndex);
+		listOfFlisght.remove(selectedValue);
 	}
 
 	@Override
