@@ -19,43 +19,41 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 
-public class ListRemoveFlightView implements IListRemoveFlightView{
+public class ListRemoveFlightView implements IListRemoveFlightView {
 
 	private JFrame frame;
-	
-	private IListRemoveFlightController listRemoveFlightController;
-	
-	private JList list;
-	
-	private List<IFlight> flights = new ArrayList();
-	
-	private DefaultListModel<IFlight> listModel;
 
+	private IListRemoveFlightController listRemoveFlightController;
+
+	private JList list;
+
+	private List<IFlight> flights = new ArrayList();
+
+	private DefaultListModel<IFlight> listModel;
 
 	public ListRemoveFlightView(IListRemoveFlightController listRemoveFlightController) {
 		this.listRemoveFlightController = listRemoveFlightController;
 	}
 
-
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.getContentPane().setLayout(null);
-		
+
 		flights = listRemoveFlightController.getFlights();
-		
+
 		listModel = setListModel(flights);
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(10, 11, 414, 204);
 		frame.getContentPane().add(scrollPane_1);
-		
+
 		list = new JList(listModel);
 		scrollPane_1.setViewportView(list);
 		list.setSelectedIndex(0);
 		JButton btnRemove = new JButton("Remove");
 		btnRemove.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				listRemoveFlightController.removeFlight((IFlight)list.getSelectedValue());
+				listRemoveFlightController.removeFlight((IFlight) list.getSelectedValue());
 				listRemoveFlightController.updateView();
 			}
 		});
@@ -63,28 +61,24 @@ public class ListRemoveFlightView implements IListRemoveFlightView{
 		frame.getContentPane().add(btnRemove);
 	}
 
-
 	private DefaultListModel<IFlight> setListModel(List<IFlight> flights) {
-		listModel = new DefaultListModel(); 
+		listModel = new DefaultListModel();
 		for (IFlight flight : flights) {
 			listModel.addElement(flight);
 		}
 		return listModel;
 	}
 
-	
-	
-
 	@Override
 	public void makeVisible(boolean b) {
 		initialize();
 		frame.setVisible(true);
-		
+
 	}
 
 	@Override
 	public void removeFlight(IFlight selectedValue) {
 		listModel.removeElement(selectedValue);
-		
+
 	}
 }

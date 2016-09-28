@@ -114,6 +114,8 @@ public class FlightView extends JFrame implements IFlightView {
 
 		yearSpinner = new JSpinner();
 		yearSpinner.setModel(new SpinnerNumberModel(2016, 2016, 2020, 1));
+		JSpinner.NumberEditor editor = new JSpinner.NumberEditor(yearSpinner, "#");
+		yearSpinner.setEditor(editor);
 		yearSpinner.setBounds(286, 157, 63, 20);
 		getContentPane().add(yearSpinner);
 

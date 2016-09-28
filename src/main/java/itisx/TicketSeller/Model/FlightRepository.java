@@ -21,9 +21,9 @@ public class FlightRepository implements IFlightRepository {
 
 	private ISingleFlightController singleFlightcontroller;
 
-	private IFlight f1 = new Flight("Oslo", "Moscova", new Date(1, 1, 2016), listOfticket, 5, new Price(2.5, 5.0));
 	private IFlight f12 = new Flight("Ankara", "Roma", new Date(1, 1, 2016), listOfticket, 4, new Price(2.5, 5.0));
-	private IFlight f13 = new Flight("Viena", "Roma", new Date(1, 1, 2016), listOfticket, 2, new Price(2.5, 5.0));
+	private IFlight f1 = new Flight("Oslo", "Moscova", new Date(1, 1, 2016), listOfticket, 5, new Price(2.5, 5.0));
+	private IFlight f13 = new Flight("Viena", "Moscova", new Date(1, 1, 2016), listOfticket, 2, new Price(2.5, 5.0));
 	private IFlight f14 = new Flight("Roma", "Moscova", new Date(1, 1, 2016), listOfticket, 5, new Price(2.5, 5.0));
 	private IFlight f2 = new Flight("Roma", "Bucuresti", new Date(1, 1, 2016), listOfticket, 5, new Price(2.5, 5.0));
 	private IFlight f3 = new Flight("Bucuresti", "Atena", new Date(1, 1, 2016), listOfticket, 5, new Price(2.5, 5.0));
@@ -41,8 +41,8 @@ public class FlightRepository implements IFlightRepository {
 		listOfticket.add(new Ticket("1d"));
 		listOfticket.add(new Ticket("1e"));
 
-		listOfFlisght.add(f1);
 		listOfFlisght.add(f12);
+		listOfFlisght.add(f1);
 		listOfFlisght.add(f13);
 		listOfFlisght.add(f14);
 		listOfFlisght.add(f2);

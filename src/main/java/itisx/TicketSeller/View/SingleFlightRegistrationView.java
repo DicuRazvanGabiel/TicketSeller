@@ -60,6 +60,8 @@ public class SingleFlightRegistrationView implements ISingleFlightRegistrationVi
 		yearSpinner = new JSpinner();
 		yearSpinner.setModel(new SpinnerNumberModel(new Integer(2016), new Integer(2016), null, new Integer(1)));
 		yearSpinner.setBounds(239, 175, 63, 20);
+		JSpinner.NumberEditor editor = new JSpinner.NumberEditor(yearSpinner, "#");
+		yearSpinner.setEditor(editor);
 		frame.getContentPane().add(yearSpinner);
 
 		JLabel label = new JLabel("Year");
